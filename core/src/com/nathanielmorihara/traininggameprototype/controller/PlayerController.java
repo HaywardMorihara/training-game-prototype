@@ -1,10 +1,11 @@
 /**
  * Copyright (C) 2020 Urban Compass, Inc.
  */
-package com.nathanielmorihara.traininggameprototype;
+package com.nathanielmorihara.traininggameprototype.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.nathanielmorihara.traininggameprototype.model.PlayerModel;
 
 /**
  * @author nathaniel.morihara

@@ -3,11 +3,18 @@ package com.nathanielmorihara.traininggameprototype;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.physics.box2d.World;
+import com.nathanielmorihara.traininggameprototype.controller.PenguinController;
+import com.nathanielmorihara.traininggameprototype.controller.PlayerController;
+import com.nathanielmorihara.traininggameprototype.model.CherryModel;
+import com.nathanielmorihara.traininggameprototype.model.PenguinModel;
+import com.nathanielmorihara.traininggameprototype.model.PlayerModel;
+import com.nathanielmorihara.traininggameprototype.view.CherryView;
+import com.nathanielmorihara.traininggameprototype.view.PenguinView;
+import com.nathanielmorihara.traininggameprototype.view.PlayerView;
 
 public class TrainingGamePrototypeGame extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -53,8 +60,10 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 	public void render () {
 		time += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
 
+		WorldState worldState = new WorldState(playerModel, penguinModel, cherryModel);
+
 		playerController.update(playerModel);
-		penguinController.update(penguinModel, playerModel, cherryModel);
+		penguinController.update(worldState);
 
 		world.step(1/60f, 6, 2);
 

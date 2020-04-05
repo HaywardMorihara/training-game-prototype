@@ -1,18 +1,19 @@
 /**
  * Copyright (C) 2020 Urban Compass, Inc.
  */
-package com.nathanielmorihara.traininggameprototype;
+package com.nathanielmorihara.traininggameprototype.model;
 
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.nathanielmorihara.traininggameprototype.view.PlayerView;
 
 /**
  * @author nathaniel.morihara
  */
-public class PlayerModel {
+public class PlayerModel extends Model {
 
   // TODO Play around with these values
   public static final float unscaledSpeed = 100f;
