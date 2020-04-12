@@ -1,8 +1,7 @@
 # training-game-prototype
 
 ## TODO
-- Penguin pathfinding gets messed up after picking so many cherries...
-- Learning from Picking up Cherries
+- Learning from Picking up Cherries to follow trainer
 - More natural penguin behavior
 - Grass background
 - Player teach commands
