@@ -22,8 +22,10 @@ import com.nathanielmorihara.traininggameprototype.learn.Learner;
  */
 public class PenguinController {
 
-  Set<Learner> learners;
+  public FollowTrainerLearner followTrainerLearner;
+
   Set<Decider> deciders;
+
 
   public PenguinController() {
     FleeTrainerDecider fleeTrainerDecider = new FleeTrainerDecider();
@@ -35,18 +37,10 @@ public class PenguinController {
     deciders.add(followTrainerDecider);
     deciders.add(followFoodDecider);
 
-    FleeTrainerLearner fleeTrainerLearner = new FleeTrainerLearner(fleeTrainerDecider);
-    FollowTrainerLearner followTrainerLearner = new FollowTrainerLearner(followTrainerDecider);
-    learners = new HashSet<>();
-    learners.add(fleeTrainerLearner);
-    learners.add(followTrainerLearner);
+    followTrainerLearner = new FollowTrainerLearner(followTrainerDecider);
   }
 
   public void update(WorldState worldState) {
-    for (Learner learner : learners) {
-      learner.learn(worldState);
-    }
-
     Action nextAction = new StillAction();
     for (Decider decider : deciders) {
       Action potentialAction = decider.decide(worldState);

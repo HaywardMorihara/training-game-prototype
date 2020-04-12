@@ -76,6 +76,9 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 		while (iterator.hasNext()) {
 			Body body = iterator.next();
 			if (body.getUserData().equals("cherry")) {
+				// TODO This really should be in the contactlistener or osmething
+				penguinController.followTrainerLearner.learn(worldState);
+
 				world.destroyBody(body);
 				worldState.setCherryModel(null);
 			}

@@ -18,6 +18,7 @@ public class FollowTrainerLearner implements Learner {
     this.followTrainerDecider = followTrainerDecider;
   }
 
+  // TODO what helps the penguin learn? not simply the state...
   @Override
   public void learn(WorldState worldState) {
     // TODO

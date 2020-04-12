@@ -14,6 +14,7 @@ import com.nathanielmorihara.traininggameprototype.model.PlayerModel;
  */
 public class FollowTrainerDecider implements Decider {
 
+  // TODO
   @Override
   public Action decide(WorldState worldState) {
     PenguinModel penguinModel = worldState.getPenguinModel();
