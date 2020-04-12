@@ -23,18 +23,24 @@ public class FollowFoodAction implements Action {
     PenguinModel penguinModel = worldState.getPenguinModel();
     CherryModel cherryModel = worldState.getCherryModel();
 
+    float linearVelocityX = 0;
+    float linearVelocityY = 0;
+
+    // TODO Refactor, diagonals shouldn't be faster
     if (cherryModel.body.getPosition().x > penguinModel.body.getPosition().x) {
-      penguinModel.body.setLinearVelocity(penguinModel.speed, 0);
+      linearVelocityX = penguinModel.speed;
     }
     if (cherryModel.body.getPosition().x < penguinModel.body.getPosition().x) {
-      penguinModel.body.setLinearVelocity(-penguinModel.speed, 0);
+      linearVelocityX = -penguinModel.speed;
     }
     if (cherryModel.body.getPosition().y > penguinModel.body.getPosition().y) {
-      penguinModel.body.setLinearVelocity(0, penguinModel.speed);
+      linearVelocityY = penguinModel.speed;
     }
     if (cherryModel.body.getPosition().y < penguinModel.body.getPosition().y) {
-      penguinModel.body.setLinearVelocity(0, -penguinModel.speed);
+      linearVelocityY = -penguinModel.speed;
     }
+
+    penguinModel.body.setLinearVelocity(linearVelocityX, linearVelocityY);
   }
 
   @Override
