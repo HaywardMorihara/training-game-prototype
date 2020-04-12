@@ -39,6 +39,7 @@ public class CherryModel extends Model {
     // Create a fixture definition to apply our shape to
     FixtureDef fixtureDef = new FixtureDef();
     fixtureDef.shape = circle;
+    // Means it doesn't participate in physics of collisions (but still contact listener)
     fixtureDef.isSensor = true;
 
     body.createFixture(fixtureDef);
