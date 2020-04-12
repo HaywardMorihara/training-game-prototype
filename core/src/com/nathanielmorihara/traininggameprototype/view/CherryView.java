@@ -12,13 +12,17 @@ import com.nathanielmorihara.traininggameprototype.model.CherryModel;
  */
 public class CherryView {
 
+  public static float FRAME_WIDTH, FRAME_HEIGHT;
+
   static Texture img;
 
   public static void load() {
     img = new Texture("Cherry.png");
+    FRAME_WIDTH = img.getWidth();
+    FRAME_HEIGHT = img.getHeight();
   }
 
   public void draw (SpriteBatch spriteBatch, CherryModel cherryModel) {
-    spriteBatch.draw(img, cherryModel.x, cherryModel.y);
+    spriteBatch.draw(img, cherryModel.body.getPosition().x, cherryModel.body.getPosition().y);
   }
 }

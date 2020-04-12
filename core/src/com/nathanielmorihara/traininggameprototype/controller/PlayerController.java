@@ -5,6 +5,8 @@ package com.nathanielmorihara.traininggameprototype.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.nathanielmorihara.traininggameprototype.WorldState;
+import com.nathanielmorihara.traininggameprototype.model.CherryModel;
 import com.nathanielmorihara.traininggameprototype.model.PlayerModel;
 
 /**
@@ -12,7 +14,9 @@ import com.nathanielmorihara.traininggameprototype.model.PlayerModel;
  */
 public class PlayerController {
 
-  public void update(PlayerModel playerModel) {
+  public void update(WorldState worldState) {
+    PlayerModel playerModel = worldState.getPlayerModel();
+
     // TODO Refactor
     if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
       playerModel.body.setLinearVelocity(0, playerModel.speed);
@@ -27,6 +31,10 @@ public class PlayerController {
       playerModel.body.setLinearVelocity(playerModel.speed, 0);
     } else {
       playerModel.body.setLinearVelocity(0,0);
+    }
+
+    if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && worldState.getCherryModel() == null) {
+      worldState.setCherryModel(new CherryModel(worldState.getWorld(), 1, playerModel.body.getPosition().x, playerModel.body.getPosition().y));
     }
   }
 }

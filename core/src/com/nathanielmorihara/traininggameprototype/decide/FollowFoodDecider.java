@@ -19,8 +19,12 @@ public class FollowFoodDecider implements Decider {
     PenguinModel penguinModel = worldState.getPenguinModel();
     CherryModel cherryModel = worldState.getCherryModel();
 
+    if (cherryModel == null) {
+      return new FollowFoodAction(0);
+    }
+
     // Desire to get food (score based on distance and tendency)
-    float cherryPenguinDistance = penguinModel.body.getPosition().dst(cherryModel.x, cherryModel.y);
+    float cherryPenguinDistance = penguinModel.body.getPosition().dst(cherryModel.body.getPosition());
     float followFoodScore = 1 / cherryPenguinDistance;
     return new FollowFoodAction(followFoodScore);
   }

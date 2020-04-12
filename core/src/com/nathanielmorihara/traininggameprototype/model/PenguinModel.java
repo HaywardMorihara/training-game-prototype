@@ -26,11 +26,14 @@ public class PenguinModel extends Model {
 
   public Body body;
 
+  String userData = "penguin";
+
   public PenguinModel(World world, float scale, float x, float y) {
     BodyDef bodyDef = new BodyDef();
     bodyDef.type = BodyDef.BodyType.DynamicBody;
     bodyDef.position.set(x, y);
     body = world.createBody(bodyDef);
+    body.setUserData(userData);
 
     width = PlayerView.FRAME_WIDTH * scale;
     height = PlayerView.FRAME_HEIGHT * scale;
