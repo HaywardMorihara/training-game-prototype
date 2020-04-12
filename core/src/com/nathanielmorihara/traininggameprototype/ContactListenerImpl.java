@@ -26,11 +26,6 @@ public class ContactListenerImpl implements ContactListener {
 
   @Override
   public void beginContact(Contact contact) {
-
-  }
-
-  @Override
-  public void endContact(Contact contact) {
     Fixture fixtureA = contact.getFixtureA();
     Fixture fixtureB = contact.getFixtureB();
 
@@ -50,6 +45,11 @@ public class ContactListenerImpl implements ContactListener {
     if (bodiesToDestroy.size() > 0) {
       worldState.addBodiesToDestory(bodiesToDestroy);
     }
+  }
+
+  @Override
+  public void endContact(Contact contact) {
+
   }
 
   @Override

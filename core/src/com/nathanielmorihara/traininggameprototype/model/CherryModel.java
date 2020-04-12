@@ -39,6 +39,7 @@ public class CherryModel extends Model {
     // Create a fixture definition to apply our shape to
     FixtureDef fixtureDef = new FixtureDef();
     fixtureDef.shape = circle;
+    fixtureDef.isSensor = true;
 
     body.createFixture(fixtureDef);
 
