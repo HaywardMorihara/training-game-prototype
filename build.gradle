@@ -22,7 +22,7 @@ allprojects {
     version = '1.0'
     ext {
         appName = "training-game-prototype"
-        gdxVersion = '1.9.10'
+        gdxVersion = '1.9.9' // Because 1.9.10 has a bug with Tiled. I think it's this: https://github.com/libgdx/libgdx/issues/5764
         roboVMVersion = '2.3.8'
         box2DLightsVersion = '1.4'
         ashleyVersion = '1.7.0'

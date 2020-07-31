@@ -97,7 +97,7 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 		}
 		batch.end();
 	}
-	
+
 	@Override
 	public void dispose () {
 		batch.dispose();
