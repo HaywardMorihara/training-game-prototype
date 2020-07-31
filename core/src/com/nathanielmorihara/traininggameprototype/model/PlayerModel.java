@@ -32,13 +32,14 @@ public class PlayerModel extends Model {
   public PlayerModel(World world, float scale, float x, float y) {
     BodyDef bodyDef = new BodyDef();
     bodyDef.type = BodyDef.BodyType.DynamicBody;
-    bodyDef.position.set(x, y);
+    bodyDef.position.set(x, y); // TODO Why doesn't this need to be scaled?
     body = world.createBody(bodyDef);
     body.setUserData(userData);
 
+    // TODO This is some coupling that probably shouldn't be there?
     width = PlayerView.FRAME_WIDTH * scale;
     height = PlayerView.FRAME_HEIGHT * scale;
-    speed = unscaledSpeed * scale;
+    speed = unscaledSpeed * scale; // TODO Should I be scaling this? Or just make it a smaller number...
 
     // Create a circle shape and set its radius to 6
     CircleShape circle = new CircleShape();

@@ -8,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
-import com.nathanielmorihara.traininggameprototype.view.PlayerView;
+import com.nathanielmorihara.traininggameprototype.view.OldPlayerView;
 
 /**
  * @author nathaniel.morihara
@@ -35,8 +35,8 @@ public class PenguinModel extends Model {
     body = world.createBody(bodyDef);
     body.setUserData(userData);
 
-    width = PlayerView.FRAME_WIDTH * scale;
-    height = PlayerView.FRAME_HEIGHT * scale;
+    width = OldPlayerView.FRAME_WIDTH * scale;
+    height = OldPlayerView.FRAME_HEIGHT * scale;
     speed = unscaledSpeed * scale;
 
     // Create a circle shape and set its radius to 6
