@@ -36,6 +36,12 @@ import com.nathanielmorihara.traininggameprototype.view.PenguinView;
 
 // TODO https://expertise.jetruby.com/creating-android-game-from-scratch-with-libgdx-box2d-45c381d84268
 // TODO https://riptutorial.com/libgdx/example/17831/create-box2d-bodies-from-tiled-map
+// TODO Make this an engine, move the engine part to a new repo
+// https://guides.gradle.org/building-java-libraries/
+// https://docs.gradle.org/6.0/userguide/publishing_setup.html
+// https://badlogicgames.com/forum/viewtopic.php?f=11&t=24080
+// https://looksok.wordpress.com/2014/07/12/compile-gradle-project-with-another-project-as-a-dependency/
+// TODO Player animation
 
 public class TrainingGamePrototypeGame extends ApplicationAdapter {
 
