@@ -83,8 +83,8 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 		unitScale = (float) 1 / tileHeight;
 
 		camera = new OrthographicCamera();
-		float viewportWidthTiles = 32;
-		float viewportHeightTiles = 24;
+		float viewportWidthTiles = 16;
+		float viewportHeightTiles = 12;
 		viewport = new FitViewport(viewportWidthTiles, viewportHeightTiles, camera);
 
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, unitScale);
@@ -173,7 +173,7 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
         debugMatrix=new Matrix4(camera.combined);
         //Scale it by 100 as our box physics bodies are scaled down by 100
         debugMatrix.scale(1f, 100f, 1f);
-        debugRenderer.render(world, camera.combined);
+//        debugRenderer.render(world, camera.combined);
 	}
 
 	@Override
