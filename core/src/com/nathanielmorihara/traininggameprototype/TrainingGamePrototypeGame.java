@@ -38,6 +38,7 @@ import com.nathanielmorihara.traininggameprototype.view.PenguinView;
 // I think gotta just make a polygon object for boundaries...and then maybe have custom code to take the inverse? There's gotta be some tutorial out there...
 // TODO https://stackoverflow.com/questions/45805732/libgdx-tiled-map-box2d-collision-with-polygon-map-object for converting polygon object
 // TODO https://jvm-gaming.org/t/libgdx-tips-on-best-practices-for-tilemap-polygon-collision-detection/50229/4 might help as well
+// TODO Search how to make edge between water and land of map...or maybe a line collision or something
 
 // TODO Make this an engine, move the engine part to a new repo
 // https://guides.gradle.org/building-java-libraries/
