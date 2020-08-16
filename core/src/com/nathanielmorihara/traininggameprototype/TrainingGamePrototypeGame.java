@@ -39,6 +39,7 @@ import com.nathanielmorihara.traininggameprototype.view.PenguinView;
 // TODO https://stackoverflow.com/questions/45805732/libgdx-tiled-map-box2d-collision-with-polygon-map-object for converting polygon object
 // TODO https://jvm-gaming.org/t/libgdx-tips-on-best-practices-for-tilemap-polygon-collision-detection/50229/4 might help as well
 // TODO Search how to make edge between water and land of map...or maybe a line collision or something
+// TODO or perhaps just section off the water into quadrants
 
 // TODO Make this an engine, move the engine part to a new repo
 // https://guides.gradle.org/building-java-libraries/
