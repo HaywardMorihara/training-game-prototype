@@ -19,11 +19,9 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.Box2D;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nathanielmorihara.traininggameprototype.controller.PenguinController;
@@ -36,6 +34,11 @@ import com.nathanielmorihara.traininggameprototype.view.PenguinView;
 
 // TODO https://expertise.jetruby.com/creating-android-game-from-scratch-with-libgdx-box2d-45c381d84268
 // TODO https://riptutorial.com/libgdx/example/17831/create-box2d-bodies-from-tiled-map
+// TODO May want to make different layers for land, water, objects, etc
+// I think gotta just make a polygon object for boundaries...and then maybe have custom code to take the inverse? There's gotta be some tutorial out there...
+// TODO https://stackoverflow.com/questions/45805732/libgdx-tiled-map-box2d-collision-with-polygon-map-object for converting polygon object
+// TODO https://jvm-gaming.org/t/libgdx-tips-on-best-practices-for-tilemap-polygon-collision-detection/50229/4 might help as well
+
 // TODO Make this an engine, move the engine part to a new repo
 // https://guides.gradle.org/building-java-libraries/
 // https://docs.gradle.org/6.0/userguide/publishing_setup.html
@@ -68,6 +71,18 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 
 	float unitScale;
 
+	private final float TILE_SIZE = 16;
+	private Shape getShapeFromRectangle(Rectangle rectangle){
+		PolygonShape polygonShape = new PolygonShape();
+		polygonShape.setAsBox(rectangle.width*0.5F/ TILE_SIZE,rectangle.height*0.5F/ TILE_SIZE);
+		return polygonShape;
+	}
+	private Vector2 getTransformedCenterForRectangle(Rectangle rectangle){
+		Vector2 center = new Vector2();
+		rectangle.getCenter(center);
+		return center.scl(1/TILE_SIZE);
+	}
+
 	@Override
 	public void create () {
 	    debugRenderer = new Box2DDebugRenderer();
@@ -96,6 +111,20 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 		// TODO Don't allow player on water
 		// TODO Could optimize by only making Box2D objects for border tiles?
 		// TODO Tiled map animations?
+
+		MapObjects objects0 = tiledMap.getLayers().get(0).getObjects();
+		for (MapObject object : objects0) {
+			Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
+
+			BodyDef bodyDef = new BodyDef();
+			bodyDef.type = BodyDef.BodyType.StaticBody;
+			Body body = world.createBody(bodyDef);
+
+			Fixture fixture = body.createFixture(getShapeFromRectangle(rectangle), 1f);
+			fixture.setFriction(0.1F);
+
+			body.setTransform(getTransformedCenterForRectangle(rectangle),0);
+		}
 
 		MapObjects objects = tiledMap.getLayers().get(1).getObjects();
 		float playerX = 0;
