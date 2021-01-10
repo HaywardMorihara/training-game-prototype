@@ -128,7 +128,7 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 			body.setTransform(getTransformedCenterForRectangle(rectangle),0);
 		}
 
-		MapObjects objects = tiledMap.getLayers().get(1).getObjects();
+		MapObjects objects = tiledMap.getLayers().get(2).getObjects();
 		float playerX = 0;
 		float playerY = 0;
 		for (MapObject object: objects) {
