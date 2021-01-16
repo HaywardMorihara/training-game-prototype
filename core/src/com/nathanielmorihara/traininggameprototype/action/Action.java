@@ -4,7 +4,6 @@
 package com.nathanielmorihara.traininggameprototype.action;
 
 import com.nathanielmorihara.traininggameprototype.WorldState;
-import com.nathanielmorihara.traininggameprototype.model.PenguinModel;
 
 /**
  * @author nathaniel.morihara

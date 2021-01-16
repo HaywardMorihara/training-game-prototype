@@ -5,7 +5,7 @@ package com.nathanielmorihara.traininggameprototype.action;
 
 import com.nathanielmorihara.traininggameprototype.WorldState;
 import com.nathanielmorihara.traininggameprototype.model.CherryModel;
-import com.nathanielmorihara.traininggameprototype.model.PenguinModel;
+import com.nathanielmorihara.traininggameprototype.model.MurphyModel;
 
 /**
  * @author nathaniel.morihara
@@ -20,27 +20,27 @@ public class FollowFoodAction implements Action {
 
   @Override
   public void act(WorldState worldState) {
-    PenguinModel penguinModel = worldState.getPenguinModel();
+    MurphyModel murphyModel = worldState.getMurphyModel();
     CherryModel cherryModel = worldState.getCherryModel();
 
     float linearVelocityX = 0;
     float linearVelocityY = 0;
 
     // TODO Refactor, diagonals shouldn't be faster
-    if (cherryModel.body.getPosition().x > penguinModel.body.getPosition().x) {
-      linearVelocityX = penguinModel.speed;
+    if (cherryModel.body.getPosition().x > murphyModel.body.getPosition().x) {
+      linearVelocityX = murphyModel.speed;
     }
-    if (cherryModel.body.getPosition().x < penguinModel.body.getPosition().x) {
-      linearVelocityX = -penguinModel.speed;
+    if (cherryModel.body.getPosition().x < murphyModel.body.getPosition().x) {
+      linearVelocityX = -murphyModel.speed;
     }
-    if (cherryModel.body.getPosition().y > penguinModel.body.getPosition().y) {
-      linearVelocityY = penguinModel.speed;
+    if (cherryModel.body.getPosition().y > murphyModel.body.getPosition().y) {
+      linearVelocityY = murphyModel.speed;
     }
-    if (cherryModel.body.getPosition().y < penguinModel.body.getPosition().y) {
-      linearVelocityY = -penguinModel.speed;
+    if (cherryModel.body.getPosition().y < murphyModel.body.getPosition().y) {
+      linearVelocityY = -murphyModel.speed;
     }
 
-    penguinModel.body.setLinearVelocity(linearVelocityX, linearVelocityY);
+    murphyModel.body.setLinearVelocity(linearVelocityX, linearVelocityY);
   }
 
   @Override

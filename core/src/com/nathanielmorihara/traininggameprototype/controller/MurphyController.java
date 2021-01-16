@@ -20,14 +20,14 @@ import com.nathanielmorihara.traininggameprototype.learn.Learner;
 /**
  * @author nathaniel.morihara
  */
-public class PenguinController {
+public class MurphyController {
 
   public FollowTrainerLearner followTrainerLearner;
 
   Set<Decider> deciders;
 
 
-  public PenguinController() {
+  public MurphyController() {
     FleeTrainerDecider fleeTrainerDecider = new FleeTrainerDecider();
     FollowTrainerDecider followTrainerDecider = new FollowTrainerDecider();
     FollowFoodDecider followFoodDecider = new FollowFoodDecider();

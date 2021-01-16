@@ -8,12 +8,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.nathanielmorihara.traininggameprototype.model.PenguinModel;
+import com.nathanielmorihara.traininggameprototype.model.MurphyModel;
 
 /**
  * @author nathaniel.morihara
  */
-public class PenguinView {
+public class MurphyView {
 
   // TODO Should these have a default?
   public static float FRAME_WIDTH, FRAME_HEIGHT;
@@ -79,27 +79,27 @@ public class PenguinView {
     walkSheet.dispose();
   }
 
-  public void draw(SpriteBatch spriteBatch, float time, PenguinModel penguinModel) {
+  public void draw(SpriteBatch spriteBatch, float time, MurphyModel murphyModel) {
     // Get current frame of animation for the current time
     // TODO Should be refactored
     TextureRegion currentFrame = still;
-    if (penguinModel.body.getLinearVelocity().y > 0) {
+    if (murphyModel.body.getLinearVelocity().y > 0) {
       currentFrame = walkUpAnimation.getKeyFrame(time, true);
     }
-    if (penguinModel.body.getLinearVelocity().y < 0) {
+    if (murphyModel.body.getLinearVelocity().y < 0) {
       currentFrame = walkDownAnimation.getKeyFrame(time, true);
     }
-    if (penguinModel.body.getLinearVelocity().x < 0) {
+    if (murphyModel.body.getLinearVelocity().x < 0) {
       currentFrame = walkLeftAnimation.getKeyFrame(time, true);
     }
-    if (penguinModel.body.getLinearVelocity().x > 0) {
+    if (murphyModel.body.getLinearVelocity().x > 0) {
       currentFrame = walkRightAnimation.getKeyFrame(time, true);
     }
     spriteBatch.draw(
         currentFrame,
-        penguinModel.body.getPosition().x - penguinModel.width / 2,
-        penguinModel.body.getPosition().y - penguinModel.height / 2,
-        penguinModel.width,
-        penguinModel.height);
+        murphyModel.body.getPosition().x - murphyModel.width / 2,
+        murphyModel.body.getPosition().y - murphyModel.height / 2,
+        murphyModel.width,
+        murphyModel.height);
   }
 }

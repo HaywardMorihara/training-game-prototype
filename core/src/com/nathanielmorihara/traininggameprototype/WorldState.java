@@ -9,8 +9,7 @@ import java.util.List;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.nathanielmorihara.traininggameprototype.model.CherryModel;
-import com.nathanielmorihara.traininggameprototype.model.Model;
-import com.nathanielmorihara.traininggameprototype.model.PenguinModel;
+import com.nathanielmorihara.traininggameprototype.model.MurphyModel;
 import com.nathanielmorihara.traininggameprototype.model.PlayerModel;
 
 /**
@@ -20,18 +19,18 @@ public class WorldState {
 
   World world;
   PlayerModel playerModel;
-  PenguinModel penguinModel;
+  MurphyModel murphyModel;
   CherryModel cherryModel;
 
   List<Body> bodiesToDestroy;
 
   public WorldState(World world,
       PlayerModel playerModel,
-      PenguinModel penguinModel,
+      MurphyModel murphyModel,
       CherryModel cherryModel) {
     this.world = world;
     this.playerModel = playerModel;
-    this.penguinModel = penguinModel;
+    this.murphyModel = murphyModel;
     this.cherryModel = cherryModel;
 
     this.bodiesToDestroy = new LinkedList<>();
@@ -54,12 +53,12 @@ public class WorldState {
     this.playerModel = playerModel;
   }
 
-  public PenguinModel getPenguinModel() {
-    return penguinModel;
+  public MurphyModel getMurphyModel() {
+    return murphyModel;
   }
 
-  public void setPenguinModel(PenguinModel penguinModel) {
-    this.penguinModel = penguinModel;
+  public void setMurphyModel(MurphyModel murphyModel) {
+    this.murphyModel = murphyModel;
   }
 
   public CherryModel getCherryModel() {

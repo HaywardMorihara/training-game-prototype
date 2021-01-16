@@ -1,12 +1,7 @@
 package com.nathanielmorihara.traininggameprototype;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -24,13 +19,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nathanielmorihara.traininggameprototype.controller.PenguinController;
 import com.nathanielmorihara.traininggameprototype.controller.PlayerController;
-import com.nathanielmorihara.traininggameprototype.model.PenguinModel;
 import com.nathanielmorihara.traininggameprototype.model.PlayerModel;
-import com.nathanielmorihara.traininggameprototype.view.CherryView;
 import com.nathanielmorihara.traininggameprototype.view.PlayerView;
-import com.nathanielmorihara.traininggameprototype.view.PenguinView;
+import com.nathanielmorihara.traininggameprototype.view.MurphyView;
 
 // TODO https://expertise.jetruby.com/creating-android-game-from-scratch-with-libgdx-box2d-45c381d84268
 // TODO https://riptutorial.com/libgdx/example/17831/create-box2d-bodies-from-tiled-map
@@ -54,8 +46,8 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 	PlayerController playerController;
 	PlayerView playerView;
 
-//	PenguinView penguinView;
-//	PenguinController penguinController;
+//	MurphyView murphyView;
+//	MurphyController murphyController;
 //
 //	CherryView cherryView;
 
@@ -143,10 +135,10 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 		// TODO This has to come after the view code, because it's based on the sprite or something...should change that
 		PlayerModel playerModel = new PlayerModel(world, unitScale, playerX, playerY);
 
-//		penguinController = new PenguinController();
-//		penguinView = new PenguinView();
-//		PenguinView.load();
-//		PenguinModel penguinModel = new PenguinModel(world, 1, 400, 200);
+//		murphyController = new MurphyController();
+//		murphyView = new MurphyView();
+//		MurphyView.load();
+//		MurphyModel murphyModel = new MurphyModel(world, 1, 400, 200);
 
 //		CherryView.load();
 //		cherryView = new CherryView();
@@ -163,7 +155,7 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 
 		playerController.update(worldState);
 
-//		penguinController.update(worldState);
+//		murphyController.update(worldState);
 //
 //		// TODO There's some weird concurrency stuff going on here that should probably get fixed
 //		List<Body> bodiesToDestroy = new LinkedList<>(worldState.getBodiesToDestroy());
@@ -172,7 +164,7 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 //			Body body = iterator.next();
 //			if (body.getUserData().equals("cherry")) {
 //				// TODO This really should be in the contactlistener or osmething
-//				penguinController.followTrainerLearner.learn(worldState);
+//				murphyController.followTrainerLearner.learn(worldState);
 //
 //				world.destroyBody(body);
 //				worldState.setCherryModel(null);
@@ -193,7 +185,7 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 
 		batch.begin();
 		playerView.draw(batch, camera, viewport, time, worldState.getPlayerModel());
-//		penguinView.draw(batch, time, worldState.getPenguinModel());
+//		murphyView.draw(batch, time, worldState.getMurphyModel());
 //		if (worldState.getCherryModel() != null) {
 //			cherryView.draw(batch, worldState.getCherryModel());
 //		}
@@ -217,7 +209,7 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		PlayerView.dispose();
-		PenguinView.dispose();
+		MurphyView.dispose();
 		debugRenderer.dispose();
 	}
 }

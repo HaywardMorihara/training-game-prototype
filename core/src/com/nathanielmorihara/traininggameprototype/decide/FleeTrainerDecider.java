@@ -6,7 +6,7 @@ package com.nathanielmorihara.traininggameprototype.decide;
 import com.nathanielmorihara.traininggameprototype.WorldState;
 import com.nathanielmorihara.traininggameprototype.action.Action;
 import com.nathanielmorihara.traininggameprototype.action.FleeTrainerAction;
-import com.nathanielmorihara.traininggameprototype.model.PenguinModel;
+import com.nathanielmorihara.traininggameprototype.model.MurphyModel;
 import com.nathanielmorihara.traininggameprototype.model.PlayerModel;
 
 /**
@@ -17,9 +17,9 @@ public class FleeTrainerDecider implements Decider {
   @Override
   public Action decide(WorldState worldState) {
     PlayerModel playerModel = worldState.getPlayerModel();
-    PenguinModel penguinModel = worldState.getPenguinModel();
+    MurphyModel murphyModel = worldState.getMurphyModel();
 
-    float playerPenguinDistance = penguinModel.body.getPosition().dst(playerModel.body.getPosition());
+    float playerPenguinDistance = murphyModel.body.getPosition().dst(playerModel.body.getPosition());
     float fleeTrainerScore = 0;
     if (playerPenguinDistance > 100) {
       fleeTrainerScore = 0;

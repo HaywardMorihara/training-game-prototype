@@ -13,7 +13,7 @@ import com.nathanielmorihara.traininggameprototype.view.OldPlayerView;
 /**
  * @author nathaniel.morihara
  */
-public class PenguinModel extends Model {
+public class MurphyModel extends Model {
   // TODO Play around with these values
   public static final float unscaledSpeed = 100f;
   public static final float density = 0.5f;
@@ -28,7 +28,7 @@ public class PenguinModel extends Model {
 
   String userData = "penguin";
 
-  public PenguinModel(World world, float scale, float x, float y) {
+  public MurphyModel(World world, float scale, float x, float y) {
     BodyDef bodyDef = new BodyDef();
     bodyDef.type = BodyDef.BodyType.DynamicBody;
     bodyDef.position.set(x, y);
