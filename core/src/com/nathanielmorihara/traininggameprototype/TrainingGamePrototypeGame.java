@@ -19,7 +19,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.nathanielmorihara.traininggameprototype.controller.MurphyController;
 import com.nathanielmorihara.traininggameprototype.controller.PlayerController;
+import com.nathanielmorihara.traininggameprototype.model.MurphyModel;
 import com.nathanielmorihara.traininggameprototype.model.PlayerModel;
 import com.nathanielmorihara.traininggameprototype.view.PlayerView;
 import com.nathanielmorihara.traininggameprototype.view.MurphyView;
@@ -46,8 +48,8 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 	PlayerController playerController;
 	PlayerView playerView;
 
-//	MurphyView murphyView;
-//	MurphyController murphyController;
+	MurphyView murphyView;
+	MurphyController murphyController;
 //
 //	CherryView cherryView;
 
@@ -123,10 +125,18 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 		MapObjects objects = tiledMap.getLayers().get(2).getObjects();
 		float playerX = 0;
 		float playerY = 0;
+		float murphyX = 0;
+		float murphyY = 0;
 		for (MapObject object: objects) {
 			RectangleMapObject point = (RectangleMapObject) object;
-			playerX = point.getRectangle().x * unitScale;
-			playerY = point.getRectangle().y * unitScale;
+			if (object.getName().equals("Player")) {
+				playerX = point.getRectangle().x * unitScale;
+				playerY = point.getRectangle().y * unitScale;
+			}
+			if (object.getName().equals("Murphy")) {
+				murphyX = point.getRectangle().x * unitScale;
+				murphyY = point.getRectangle().y * unitScale;
+			}
 		}
 
 		playerController = new PlayerController();
@@ -135,15 +145,15 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 		// TODO This has to come after the view code, because it's based on the sprite or something...should change that
 		PlayerModel playerModel = new PlayerModel(world, unitScale, playerX, playerY);
 
-//		murphyController = new MurphyController();
-//		murphyView = new MurphyView();
-//		MurphyView.load();
-//		MurphyModel murphyModel = new MurphyModel(world, 1, 400, 200);
+		murphyController = new MurphyController();
+		murphyView = new MurphyView();
+		MurphyView.load();
+		MurphyModel murphyModel = new MurphyModel(world, unitScale, murphyX, murphyY);
 
 //		CherryView.load();
 //		cherryView = new CherryView();
 
-		worldState = new WorldState(world, playerModel, null, null);
+		worldState = new WorldState(world, playerModel, murphyModel, null);
 		world.setContactListener(new ContactListenerImpl(worldState));
 
 		batch = new SpriteBatch();
@@ -155,7 +165,7 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 
 		playerController.update(worldState);
 
-//		murphyController.update(worldState);
+		murphyController.update(worldState);
 //
 //		// TODO There's some weird concurrency stuff going on here that should probably get fixed
 //		List<Body> bodiesToDestroy = new LinkedList<>(worldState.getBodiesToDestroy());
@@ -185,7 +195,7 @@ public class TrainingGamePrototypeGame extends ApplicationAdapter {
 
 		batch.begin();
 		playerView.draw(batch, camera, viewport, time, worldState.getPlayerModel());
-//		murphyView.draw(batch, time, worldState.getMurphyModel());
+		murphyView.draw(batch, camera, time, worldState.getMurphyModel());
 //		if (worldState.getCherryModel() != null) {
 //			cherryView.draw(batch, worldState.getCherryModel());
 //		}

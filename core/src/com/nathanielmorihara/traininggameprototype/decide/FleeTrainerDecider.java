@@ -21,7 +21,7 @@ public class FleeTrainerDecider implements Decider {
 
     float playerPenguinDistance = murphyModel.body.getPosition().dst(playerModel.body.getPosition());
     float fleeTrainerScore = 0;
-    if (playerPenguinDistance > 100) {
+    if (playerPenguinDistance > 5) {
       fleeTrainerScore = 0;
     } else {
       fleeTrainerScore = 1 / playerPenguinDistance;

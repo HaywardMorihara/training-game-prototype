@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.nathanielmorihara.traininggameprototype.view.MurphyView;
 import com.nathanielmorihara.traininggameprototype.view.OldPlayerView;
 
 /**
@@ -35,8 +36,8 @@ public class MurphyModel extends Model {
     body = world.createBody(bodyDef);
     body.setUserData(userData);
 
-    width = OldPlayerView.FRAME_WIDTH * scale;
-    height = OldPlayerView.FRAME_HEIGHT * scale;
+    width = MurphyView.FRAME_WIDTH * scale;
+    height = MurphyView.FRAME_HEIGHT * scale;
     speed = unscaledSpeed * scale;
 
     // Create a circle shape and set its radius to 6
